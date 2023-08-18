@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% load static %}
+        <link href="{% static 'connect4.css' %}" rel="stylesheet" type="text/css">
+        <script src="{% static 'connect4.js' %}"></script>
+        <title>Connect 4</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="center">
+                <div id="id_title" class="subtitle">Login</div>
+                <form method="post" action="{% url 'login' %}">
+                    <table>
+                        {% for field in form.visible_fields %}
+                            <tr>
+                                <td class="pad">{{field.label_tag}}</td>
+                            </tr>
+                            <tr>
+                                <td class="field">{{field}}</td>
+                                <td class="error">
+                                    {% for error in field.errors %} {{error}} {% endfor %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {% csrf_token %}
+                    <table class="padextra">
+                        <tr>
+                            <td>
+                                <button class="login" id="id_login_button" type="submit">Login</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
+                {% for error in form.non_field_errors %}
+                    <p class="errorlist">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            </div>
+                
+            <div class="footer">
+                <p>
+                    <a href="{% url 'register' %}">not a member? register now</a>
+                </p>
+            </div>
+        </div>
+
+    </body>
+</html>

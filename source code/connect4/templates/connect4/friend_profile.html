@@ -1,0 +1,58 @@
+{% extends "connect4/base.html" %}
+
+{% block content %}
+    <table>
+        <tr>
+            <td>
+                <a>
+                    <button class="newgame" id="id_profile_button">{{profile.nickname}}'s Profile</button>
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    </br>
+
+    <div id="id_profile_container" class="profilecontainer">
+        <div class="inner-col">
+            <img id="id_user_picture" class="profile-picture" src="{{profile.profile_picture}}" alt="user profile photo" width="100px" height="100px">
+            {% if not profile.token_picture %}
+                {% load static %}
+                <img id="id_token_picture" class="profile-picture" src="{{profile.profile_picture}}" alt="default token photo" width="100px" height="100px">
+            {% else %}
+                <img id="id_token_picture" class="profile-picture" src="{% url 'get-token-photo' profile.user.id %}" alt="user token photo" width="100px" height="100px">
+            {% endif %}
+            <div id="id_user_nickname">{{profile.nickname}}</div>
+            <div id="id_user_bio">{{profile.bio}}</div>
+
+            {% if profile.user in request.user.profile.following.all %}
+                {% if request.user in profile.following.all %}
+                    <form action="{% url 'unfriend' profile.user.id %}" method="POST">
+                        <button id="id_unfriend">Unfriend</button>
+                        {% csrf_token %}
+                    </form>
+                {% else %}
+                    </br>
+                    <button id="id_requested">Requested</button>
+                {% endif %}
+            {% else %}
+                {% if request.user in profile.following.all %}
+                    <form action="{% url 'friend' profile.user.id %}" method="POST">
+                        <button id="id_follow">Accept</button>
+                        {% csrf_token %}
+                    </form>
+                    <form action="{% url 'unfriend' profile.user.id %}" method="POST">
+                        <button id="id_follow">Reject</button>
+                        {% csrf_token %}
+                    </form>
+                {% else %}
+                    <form action="{% url 'friend' profile.user.id %}" method="POST">
+                        <button id="id_follow">Add Friend</button>
+                        {% csrf_token %}
+                    </form>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    
+{% endblock %}

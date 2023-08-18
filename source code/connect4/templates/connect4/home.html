@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% load static %}
+        <link href="{% static 'connect4.css' %}" rel="stylesheet" type="text/css">
+        <script src="{% static 'connect4.js' %}"></script>
+        <title>Connect 4</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="center">
+                <div id="id_title" class="title">CONNECT 4</div>
+                <table class="tablehome">
+                    <tr>
+                        <td class="tdhome">
+                            <a href="{% url 'global' %}">
+                                <button class="login" id="id_login_button" type="submit">Start</button>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

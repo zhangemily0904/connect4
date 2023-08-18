@@ -1,0 +1,64 @@
+{% extends "connect4/base.html" %}
+
+{% block content %}
+    <table>
+        <tr>
+            <td>
+                <a href="{% url 'create-room' %}">
+                    <button class="newgame" id="id_start_new_game_button">{{game_status}}</button>
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    </br>
+
+    <div id="id_active_room_list" class="roomcontainer">
+        <table id="id_friends_challenge_table">
+            {% for room in challenge_requests %}
+            <tr>
+                <td class="pad">
+                    
+                    <button class="friend-request" id="id_join_room_button">
+                        Challenge request from: 
+                        {{room.player_1.username}}
+
+                        <a href="{% url 'join-room' room.room_id  %}" class="challenge_button accept">
+                            Accept
+                        </a>
+                        <a href="{% url 'decline-challenge' room.room_id %}" class="challenge_button reject">
+                            Reject
+                        </a>
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+        {% if has_requests %}
+        </br>
+        </br>
+        </br>
+        {% endif %}
+
+        <table id="id_active_rooms_table">
+        {% for room in rooms %}
+            <tr>
+                <td class="pad">
+                    <a href="{% url 'join-room' room.room_id %}">
+                        <button class="joingame" id="id_join_room_button">
+                            Room {{room.room_id}}: 
+                            {{room.player_1.username}}
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+    <script>
+        window.onload = getGlobal()
+        window.setInterval(getGlobal, 1000)
+    </script>
+{% endblock %}

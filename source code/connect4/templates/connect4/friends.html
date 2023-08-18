@@ -1,0 +1,74 @@
+{% extends "connect4/base.html" %}
+
+{% block content %}
+    <table>
+        <tr>
+            <td>
+                <a>
+                    <button class="newgame" id="leaderboard_button">Friends</button>
+                </a>
+            </td>
+        </tr>
+    </table>
+    
+    </br>
+
+    <div id="id_friend_list" class="roomcontainer">
+        <table id="id_friend_list_table">
+            {% for request in requests %}
+                <tr>
+                    <td class="pad">
+                        <a href="{% url 'friend-profile' request.user_id %}">
+                            <button class="friend-request" id="id_friend_request">
+                                <img src={{request.pfp}} style="vertical-align:middle" alt="nopfp" width="50" height="50">
+                                {{request.nickname}} sent you a friend request
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        {% if has_requests %}
+            </br>
+            </br>
+            </br>
+        {% endif %}
+        
+        <table id="id_friend_list_table">
+            {% for profile in profiles %}
+                <tr>
+                    <td class="pad">
+                        <a href="{% url 'friend-profile' profile.user_id %}" class="friends">
+                            <button class="joingame" id="id_friend_button">
+                                {{profile.rank}}
+                                <img src={{profile.pfp}} style="vertical-align:middle" alt="nopfp" width="50" height="50">
+                                {{profile.nickname}}
+                                
+                                {% if room and room.challenge and room.challenge.id == profile.user_id %}
+                                    {% if room.player_2 != None %}
+                                    <span class="challenge_button">
+                                        Challenge Accepted
+                                    </span>
+                                    {% else %}
+                                    <a href="{% url 'cancel-challenge' room.room_id %}" class="challenge_button">
+                                        Cancel Challenge
+                                    </a>
+                                    {% endif %}
+                                {% elif not room and not room.challenge and not request.user.room%}
+                                    <a href="{% url 'challenge' profile.user_id %}" class="challenge_button">
+                                        Challenge
+                                    </a>
+                                {% endif %}
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script>
+     
+    </script>
+{% endblock %}

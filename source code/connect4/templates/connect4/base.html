@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    {% load static %}
+		<link href="{% static 'connect4.css' %}" rel="stylesheet" type="text/css">
+		<script src="{% static 'connect4.js' %}"></script>
+        <script type="text/javascript">
+            DJANGO_STATIC_URL = '{{ STATIC_URL }}';
+        </script>
+		<title> {% block title %} Connect4 {% endblock %} </title>
+	</head>
+
+	<body>
+        <div id="id_header_div" class="heading-container">
+            <table class="pad">
+                <tr>
+                    <td>
+                        <div id="id_site_name" class="headertitle">
+                            Connect4
+                        </div>
+                    </td>
+
+                    <td class="tdfiller"></td>
+
+                    <td class="tdheader">
+                        <div>
+                            <a href="{% url 'global' %}">
+                                <button class="headerref" id="id_nav_global">Global</button>
+                            </a>
+                        </div>
+                    </td>
+                    <td class="tdheader">
+                        <div>
+                            <a href="{% url 'leaderboard' %}">
+                                <button class="headerref" id="id_nav_leaderboard">Leaderboard</button>
+                            </a>
+                        </div>
+                    </td>
+                    <td class="tdheader">
+                        <div>
+                            <a href="{% url 'profile' %}">
+                                <button class="headerref" id="id_nav_profile">Profile</button>
+                            </a>
+                        </div>
+                    </td>
+                    <td class="tdheader">
+                        <div>
+                            <a href="{% url 'friends' %}">
+                                <button class="headerref" id="id_friends">Friends</button>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+	    <div class="content">
+		    {% block content %}
+		    {% endblock %}
+		</div>
+	</body>
+</html>

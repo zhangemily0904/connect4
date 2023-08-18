@@ -1,0 +1,404 @@
+body {
+    background-color: #FFEBCB;
+    font-family:Arial;
+}
+
+.container {
+    height: 98vh;
+    width: 99vw;
+    position: relative;
+}
+
+.roomcontainer {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    height: 98vh;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFA17b;
+    border-radius: 1vw;
+    position: relative;
+}
+
+.gamecontainer {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    height: 90vh;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFA17b;
+    border-radius: 1vw;
+    position: relative;
+}
+
+.player1container {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 1vw;
+    margin-top: 0;
+    height: 12vh;
+    width: 13vw;
+    background-color: #FFEBCB;
+    border-radius: 1vw;
+}
+
+.player2container {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 1vw;
+    margin-top: 0;
+    height: 12vh;
+    width: 13vw;
+    background-color: #6FA7FA;
+    border-radius: 1vw;
+}
+
+.endgame {
+    border: none;
+    border-radius: 1vw;
+    font-size: 1vw;
+    font-style: bold;
+    color: #FFEBCB;
+    width: 14vw;
+    height: 6vh;
+    background-color: #e45d48;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    text-align: center;
+}
+
+.timer {
+    border: none;
+    border-radius: 1vw;
+    font-size: 1vw;
+    font-style: bold;
+    color: #000000;
+    width: 14vw;
+    height: 6vh;
+    background-color: #e4c248;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    text-align: center;
+}
+
+.endplaceholder {
+    border: none;
+    border-radius: 1vw;
+    font-size: 1vw;
+    color: #FFEBCB;
+    width: 14vw;
+    height: 3vh;
+    background-color: #FFA17b;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    text-align: center;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.footer {
+    margin:auto;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+}
+  
+.title {
+    color:black;
+    font-size:4vw;
+    font-weight:bold;
+    text-align:center;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+.subtitle {
+    color:black;
+    font-size:4vw;
+    font-weight:bold;
+    text-align:center;
+}
+
+.headertitle {
+    color:black;
+    font-size:3.5vw;
+    font-weight:bold;
+}
+
+.pagetitle {
+    color:black;
+    font-size:2vw;
+    font-weight:bold;
+    text-align:center;
+}
+
+form {
+    font-size:1.5vw;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+table{
+    margin-left:auto; 
+    margin-right:auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.tablehome {
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+}
+
+.pad {
+    padding-top: 1vh;
+}
+
+.padextra {
+    padding-top: 3vh;
+}
+
+.paddrop {
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+
+.padboard {
+    padding-left: 1vw;
+}
+
+.tdhome {
+    padding-top: 3vh;
+}
+
+.tdfiller {
+    padding-left: 28vw;
+}
+
+.tdheader {
+    padding-left: 1vw;
+}
+
+.login {
+    border: none;
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    color: #FFEBCB;
+    width: 18vw;
+    height: 7.5vh;
+    background-color: #41a9b6;
+}
+
+.headerref {
+    border: none;
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    color: #FFEBCB;
+    width: 11vw;
+    height: 7.5vh;
+    background-color: #41a9b6;
+}
+
+.newgame {
+    border: none;
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    color: #FFEBCB;
+    width: 20vw;
+    height: 7.5vh;
+    background-color: #41a9b6;
+    margin-top: 40px;
+}
+
+.joingame {
+    border: none;
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    font-style: bold;
+    background-color: #FFEBCB;
+    color: #FFA17b;
+    width: 30vw;
+    height: 7.5vh;
+}
+
+.status {
+    border: none;
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    color: #FFEBCB;
+    width: 20vw;
+    height: 7.5vh;
+    background-color: #41a9b6;
+    margin-top: 40px;
+}
+
+.player1status {
+    font-size: 1vw;
+    color: #FFA17b;
+}
+
+.player2status {
+    font-size: 1vw;
+    color: #FFEBCB;
+}
+
+.drop {
+    border: none;
+    border-radius: 1vw;
+    color: #FFEBCB;
+    width: 3vw;
+    height: 4vh;
+    background-color: #41a9b6;
+}
+
+input {
+    border: none;
+    padding: 0.5vw;
+    font-size: 2vh;
+    border-radius: 1vw;
+    width: 30vw;
+    height: 4.5vh;
+    background-color: #84b0b6;
+    border-color: #84b0b6;
+}
+
+.profilecontainer {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    height: 98vh;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFA17b;
+    border-radius: 1vw;
+    position: relative;
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+    align-items: center;
+}
+
+.inner-col {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 1vw;
+    background-color: #FFEBCB;
+    color: #FFA17b;
+    width: fit-content;
+    height: fit-content;
+    overflow: auto;
+}
+
+.profile-picture {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.center-submit {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 1vw;
+    font-size: 2vh;
+    font-style: bold;
+    border-radius: 1vw;
+    background-color: #84b0b6;
+    border-color: #84b0b6;
+    
+}
+
+.profile_form {
+    width: 20vw;
+}
+
+.token_form {
+    width: 20vw;
+}
+
+.timer-col {
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 2vh;
+}
+.friendscontainer {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    height: 98vh;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFA17b;
+    border-radius: 1vw;
+    position: relative;
+    display: flex;
+}
+
+.friend-request {
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    font-style: bold;
+    background-color: #FFA17b;
+    color: #FFEBCB;
+    border-color: black;
+    width: 30vw;
+    height: 7.5vh;
+}
+
+.challenge_button {
+    text-decoration: none; 
+    background-color: #84b0b6;
+    color: #FFEBCB;
+    padding: 2px 6px 2px 6px;
+    border-radius: 0.5vw;
+}
+
+.accept {
+    background-color: green;
+}
+
+.reject {
+    background-color: red;
+}
+
+.friends {
+    text-decoration: none;
+    color: #FFA17b;
+}
+
+.logout {
+    border: none;
+    border-radius: 0.75vw;
+    font-size: 1.5vw;
+    color: #FFEBCB;
+    width: 7vw;
+    height: 4vh;
+    background-color: rgb(140, 136, 136);
+    
+}
+
+.logout-div {
+    text-align: center;
+}

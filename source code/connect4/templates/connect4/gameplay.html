@@ -1,0 +1,166 @@
+{% extends "connect4/base.html" %}
+
+{% block content %}
+
+    <span id="error" class="error"></span>
+
+    <table>
+        <tr>
+            <td>
+                <button class="status" id="id_status">{{room.status}}</button>
+            </td>
+        </tr>
+    </table>
+    
+    </br>
+
+    <div class="gamecontainer">
+        <table>
+            <tr>
+                <td class="timer-col">
+                    <a>
+                        <button class="timer" id="timer_test">Timer</button>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td class="paddrop">
+                    <button class="drop" id="id_drop_button_0" type="submit" onclick="dropToken(0)">col 0</button>
+                </td>
+                <td class="paddrop">
+                    <button class="drop" id="id_drop_button_1" type="submit" onclick="dropToken(1)">col 1</button>
+                </td>
+                <td class="paddrop">
+                    <button class="drop" id="id_drop_button_2" type="submit" onclick="dropToken(2)">col 2</button>
+                </td>
+                <td class="paddrop">
+                    <button class="drop" id="id_drop_button_3" type="submit" onclick="dropToken(3)">col 3</button>
+                </td>
+                <td class="paddrop">
+                    <button class="drop" id="id_drop_button_4" type="submit" onclick="dropToken(4)">col 4</button>
+                </td>
+                <td class="paddrop">
+                    <button class="drop" id="id_drop_button_5" type="submit" onclick="dropToken(5)">col 5</button>
+                </td>
+                <td class="paddrop">
+                    <button class="drop" id="id_drop_button_6" type="submit" onclick="dropToken(6)">col 6</button>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <div class="player1container" id="player-status-1">
+                        <table>
+                            <tr>
+                                {% if endgame_p2 != null %}
+                                    <a href="{% url 'friend-profile' room.player_1.id %}">
+                                {% endif %}
+                                    <div id="id_player_1_pfp">
+                                        <img src={{player_1_pfp}} style="vertical-align:middle" alt="nopfp" width="65" height="65">
+                                    </div>  
+                                </a>
+                                
+                            </tr>
+                        </br>
+                            <tr>
+                                <div class="player1status" id="id_player_1_info">
+                                    {{room.player_1.username}} 
+                                </div>
+                            </tr>
+                        </table>
+                    </div>
+                </br>
+
+                    {% if endgame_p1 != null%}
+                    <div id="player_1_surrender_button">
+                        <a href="{% url 'end-game' %}">
+                            <button class="endgame" id="player_1_end_game">Surrender</button>
+                        </a>
+                    </div>
+                    {% else %} 
+                    <div class="endplaceholder" id="player_1_end_game">
+                    </div>
+                    {% endif %} 
+                    
+                </td>
+                <td class="padboard">
+                    <div class="game-board">
+                        <svg width="700" height="600" id="id_game_board">
+                            <rect width="700" height="600" style="fill:rgb(0,0,255)"></rect>
+                            {% for row in board %}
+                                {% for slot in row %}
+                                    <g>
+                                        <circle class="slot" id={{slot.id}} fill="white" r={{slot.radius}} cx={{slot.cx}} cy={{slot.cy}}></circle>
+                                    </g>
+                                {% endfor %}
+                            {% endfor %}                        
+                        </svg>
+                        <script>
+                            const dropTokenURL =  "{% url 'drop-token' %}"
+                            window.onload = getGameplay()
+                            window.setInterval(getGameplay, 1000)
+                        </script>
+                    </div>
+                </td>
+                <td class="padboard">
+                    <div class="player2container" id="player-status-2">
+                        <table>
+                            <tr> 
+                                
+                                    {% if room.player_2 != null %}
+                                        {% if endgame_p1 != null %}
+                                            <a href="{% url 'friend-profile' room.player_2.id %}">
+                                        {% endif %} 
+                                            <div id="id_player_2_pfp">
+                                                    <img src={{player_2_pfp}} style="vertical-align:middle" alt="nopfp" width="65" height="65">    
+                                            </div>  
+                                        </a>
+                                    {% else %} 
+                                        {% load static %}
+                                        <div id="id_player_2_pfp">
+                                            <img src="{% static 'media/blankpfp.jpeg' %}" style="vertical-align:middle" alt="nopfp" width="65" height="65">
+                                        </div>
+                                    {% endif %} 
+                                
+                            </tr>
+                        </br>
+                            <tr>
+                                <div class="player2status" id="id_player_2_info">
+                                    {% if room.player_2 != null %}
+                                    {{room.player_2.username}} 
+                                    {% else %} 
+                                    Waiting for player 2!
+                                    {% endif %} 
+                                </div>
+                            </tr>
+                        </table>
+                        
+                    </div>
+                </br>
+                    
+                    {% if endgame_p2 != null %}
+                    <div id="player_2_surrender_button">
+                        <a href="{% url 'end-game' %}">
+                            <button class="endgame" id="player_2_end_game">Surrender</button>
+                        </a>
+                    </div>
+                    {% else %} 
+                    <div class="endplaceholder" id="player_2_end_game">
+                    </div>
+                    {% endif %} 
+
+                </td>
+            </tr>
+            </br>
+            <tr class="timer-col">
+            </tr>
+
+        </table>
+        
+    </div>
+
+    
+{% endblock %}

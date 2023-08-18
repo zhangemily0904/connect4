@@ -1,0 +1,40 @@
+{% extends "connect4/base.html" %}
+
+{% block content %}
+    <table>
+        <tr>
+            <td>
+                <a>
+                    <button class="newgame" id="leaderboard_button">Leaderboard</button>
+                </a>
+            </td>
+        </tr>
+    </table>
+    
+    </br>
+
+    <div id="id_leaderboard_list" class="roomcontainer">
+        <table id="id_leaderboard_list_table">
+        {% for profile in profiles %}
+            <tr>
+                <td class="pad">
+                    <a href="{% url 'friend-profile' profile.user_id %}" class="friends">
+                        <button class="joingame" id="id_leaderboard_button">
+                            {{profile.rank}}
+                            <img src={{profile.pfp}} style="vertical-align:middle" alt="nopfp" width="50" height="50">
+                            {{profile.nickname}}
+                            <img src="https://pngimg.com/uploads/gold_medal/gold_medal_PNG28.png" style="vertical-align:middle" alt="nopfp" width="50" height="50">
+                            {{profile.wins}}
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+    <script>
+        window.onload = getGlobal()
+        window.setInterval(getGlobal, 1000)
+    </script>
+{% endblock %}
